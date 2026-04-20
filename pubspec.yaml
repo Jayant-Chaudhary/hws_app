@@ -1,0 +1,34 @@
+name: hws_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  firebase_core: ^3.10.1
+  firebase_auth: ^5.4.1
+  cloud_firestore: ^5.6.2
+  google_sign_in: ^6.2.2
+  google_maps_flutter: ^2.10.0
+  flutter_background_service: ^5.1.0
+  flutter_reactive_ble: ^5.4.2
+  geolocator: ^13.0.1
+  flutter_riverpod: ^2.6.1
+  google_fonts: ^6.2.1
+  font_awesome_flutter: ^10.8.0
+  intl: ^0.20.2
+  permission_handler: ^11.3.1
+  animations: ^2.0.11
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

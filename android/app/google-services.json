@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "448013143023",
+    "project_id": "smart-backpack-hws",
+    "storage_bucket": "smart-backpack-hws.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448013143023:android:35e1e9b1c612fb51bf841a",
+        "android_client_info": {
+          "package_name": "com.example.hws_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448013143023-4b9a9shnljtkn2qt3ai9tvue17r1esar.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hws_app",
+            "certificate_hash": "ecdfc50c7a84eb986b6a5898d789d4903402abfa"
+          }
+        },
+        {
+          "client_id": "448013143023-dapugliulbojbimh7mn4tl2il3rvuicp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-AA7KlbY-XEsYXfT0OIlxHTHe5zAvPgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448013143023-dapugliulbojbimh7mn4tl2il3rvuicp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
