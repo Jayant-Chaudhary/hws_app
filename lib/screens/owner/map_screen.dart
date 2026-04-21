@@ -8,6 +8,7 @@ import '../../core/theme.dart';
 import '../../models/bag_model.dart';
 import '../../providers/app_providers.dart';
 import '../../services/owner_ble_service.dart';
+import 'bag_inventory_screen.dart';
 
 class MapScreen extends ConsumerStatefulWidget {
   final BagModel bag;
@@ -263,6 +264,21 @@ class _MapScreenState extends ConsumerState<MapScreen> {
   }
 
   void _showInventorySheet() async {
+    // Navigate to the full NFC Bag Inventory screen
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => BagInventoryScreen(
+          bagId: widget.bag.id,
+          bagName: widget.bag.name,
+        ),
+      ),
+    );
+  }
+
+  /// Legacy: Show the old text-based BLE inventory sheet.
+  /// Retained for direct BLE hardware memory sync when connected.
+  void _showLegacyInventorySheet() async {
     if (_bleService == null) return;
     
     showModalBottomSheet(

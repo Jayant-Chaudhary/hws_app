@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../core/theme.dart';
 import '../../providers/app_providers.dart';
-import '../../models/user_model.dart';
+
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});

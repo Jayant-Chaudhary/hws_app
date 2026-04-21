@@ -6,6 +6,10 @@ import '../models/bag_model.dart';
 
 import '../services/auth_service.dart';
 
+// Re-export NFC Bag Inventory providers for convenient access
+export '../providers/bag_inventory_provider.dart'
+    show bagInventoryProvider, nfcScanServiceProvider, BagInventoryState, ScanAction;
+
 final firebaseServiceProvider = Provider((ref) => FirebaseService());
 final authServiceProvider = Provider((ref) => AuthService());
 
@@ -30,3 +34,4 @@ final selectedBagProvider = StateProvider<BagModel?>((ref) => null);
 final bagStreamProvider = StreamProvider.family<BagModel?, String>((ref, bagId) {
   return ref.read(firebaseServiceProvider).streamBag(bagId);
 });
+
