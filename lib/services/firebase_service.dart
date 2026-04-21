@@ -76,6 +76,53 @@ class FirebaseService {
     await _db.collection('bags').doc(bagId).update({'isArmed': isArmed});
   }
 
+  // --- NFC Inventory ---
+
+  /// Read inventory data for a bag (the nfcInventory field).
+  Future<Map<String, dynamic>?> getBagInventoryData(String bagId) async {
+    try {
+      final doc = await _db.collection('bags').doc(bagId).get();
+      if (doc.exists) {
+        final data = doc.data();
+        // Prefer nfcInventory, fallback to pocketItems
+        if (data != null && data.containsKey('nfcInventory')) {
+          return Map<String, dynamic>.from(data['nfcInventory'] as Map);
+        } else if (data != null && data.containsKey('pocketItems')) {
+          return Map<String, dynamic>.from(data['pocketItems'] as Map);
+        }
+      }
+    } catch (e) {
+      print("Failed to read bag inventory: $e");
+    }
+    return null;
+  }
+
+  /// Update both the NFC inventory data and legacy pocketItems map.
+  Future<void> updateBagInventory(
+    String bagId,
+    Map<String, dynamic> nfcInventory,
+    Map<String, bool> pocketItems,
+  ) async {
+    await _db.collection('bags').doc(bagId).update({
+      'nfcInventory': nfcInventory,
+      'pocketItems': pocketItems,
+      'lastSync': FieldValue.serverTimestamp(),
+    });
+  }
+
+  /// Stream real-time inventory changes for a bag.
+  Stream<Map<String, dynamic>> streamBagInventory(String bagId) {
+    return _db.collection('bags').doc(bagId).snapshots().map((doc) {
+      if (doc.exists) {
+        final data = doc.data();
+        if (data != null && data.containsKey('nfcInventory')) {
+          return Map<String, dynamic>.from(data['nfcInventory'] as Map);
+        }
+      }
+      return <String, dynamic>{};
+    });
+  }
+
   // --- Alerts ---
 
   Future<void> reportAlert(String bagId, String type, String message) async {

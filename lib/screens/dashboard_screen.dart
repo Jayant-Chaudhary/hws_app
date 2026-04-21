@@ -11,6 +11,7 @@ import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import '../../core/permissions.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'owner/map_screen.dart';
+import 'owner/bag_inventory_screen.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({super.key});
@@ -390,6 +391,16 @@ class _BagCard extends ConsumerWidget {
                     style: TextStyle(color: bag.isArmed ? AppTheme.accentNeonCyan : AppTheme.textDim, fontSize: 12),
                   ),
                 ],
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.backpack_outlined, color: AppTheme.accentNeonCyan),
+              tooltip: 'Bag Inventory',
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => BagInventoryScreen(bagId: bag.id, bagName: bag.name),
+                ),
               ),
             ),
             IconButton(
